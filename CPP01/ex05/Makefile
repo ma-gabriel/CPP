@@ -2,7 +2,7 @@
 SRCS = main.cpp \
 	   Harl.cpp
 
-OBJECTS = $(SRCS:.cpp=.opp)
+OBJECTS = $(SRCS:.cpp=.o)
 
 NAME = ex05
 
