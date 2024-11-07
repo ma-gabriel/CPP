@@ -2,21 +2,21 @@
 #ifndef CONTACT_CLASS_HPP
 # define CONTACT_CLASS_HPP
 
-# include "using_std.hpp"
+# include <iostream>
 
 class Contact {
 	public:
-		string first_name;
-		string last_name;
-		string nickname;
-		string phone_number;
-		string darkest_secret;
+		std::string first_name;
+		std::string last_name;
+		std::string nickname;
+		std::string phone_number;
+		std::string darkest_secret;
 
-		Contact(string first_name,
-				string last_name,
-				string nickname,
-				string phone_number,
-				string darkest_secret);
+		Contact(std::string first_name,
+				std::string last_name,
+				std::string nickname,
+				std::string phone_number,
+				std::string darkest_secret);
 		Contact(void);
 		~Contact(void);
 		void show(void);

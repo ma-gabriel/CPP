@@ -1,11 +1,15 @@
 
-SRCS = main.cpp
+SRCS = main.cpp \
+	   Harl.cpp
 
 OBJECTS = $(SRCS:.cpp=.opp)
 
 NAME = ex05
 
 CXX = c++
+
+
+HEADERS =  Harl.hpp
 
 CPPFLAGS = -Wall -Wextra -Werror
 
@@ -14,7 +18,7 @@ CPPFLAGS = -Wall -Wextra -Werror
 
 all: $(NAME)
 
-$(NAME): $(OBJECTS) Makefile
+$(NAME): $(OBJECTS) Makefile $(HEADERS)
 	$(CXX) $(OBJECTS) -o $(NAME) $(CFLAGS)
 
 clean:

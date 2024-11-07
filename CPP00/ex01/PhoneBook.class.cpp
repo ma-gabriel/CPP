@@ -1,5 +1,7 @@
 // includes
 #include "PhoneBook.class.hpp"
+#include <iostream>
+#include <iomanip>
 
 
 // constructor
@@ -10,20 +12,20 @@ PhoneBook::PhoneBook(void){
 // destructor
 PhoneBook::~PhoneBook(void){}
 
-static Contact createContact(const string entries[5]) {
+static Contact createContact(const std::string entries[5]) {
     return Contact(entries[0], entries[1], entries[2], entries[3], entries[4]);
 }
 
 void PhoneBook::add(void){
-	string entries[5];
-	const string prompts[5] = {"first name", "last name",
+	std::string entries[5];
+	const std::string prompts[5] = {"first name", "last name",
 		"nickname", "phone number", "darkest secret"};
 
 	for (int i = 0; i < 5; i++){
-		cout << prompts[i] << ": ";
-		getline(cin, entries[i]);
+		std::cout << prompts[i] << ": ";
+		std::getline(std::cin, entries[i]);
 		if (entries[i].length() == 0){
-			cout << "Can't have empty field\n";
+			std::cout << "Can't have empty field\n";
 			return ;
 		}
 	}
@@ -31,29 +33,29 @@ void PhoneBook::add(void){
 	this->index++;
 }
 
-void PhoneBook::print_str(string str){
+void PhoneBook::print_str(std::string str){
 	if (str.length() <= 10){
-		cout << setw(10) << str;
+		std::cout << std::setw(10) << str;
 	} else {
-		cout << str.substr(0, 9) << '.' ;
+		std::cout << str.substr(0, 9) << '.' ;
 	}
 }
 
 void PhoneBook::search(void){
 	int i;
-	cout << "       ID |first name| last name|  nickname\n";
+	std::cout << "       ID |first name| last name|  nickname\n";
 	for (i = 0; i < this->index && i < 8; i++){
-		cout << setw(10) << i << '|';
+		std::cout << std::setw(10) << i << '|';
 		this->print_str(this->contacts[i].first_name);
-		cout << '|';
+		std::cout << '|';
 		this->print_str(this->contacts[i].last_name);
-		cout << '|';
+		std::cout << '|';
 		this->print_str(this->contacts[i].nickname);
-		cout << endl;
+		std::cout << std::endl;
 	}
-	string str;
-	cout << "id :";
-	getline(cin, str);
+	std::string str;
+	std::cout << "id :";
+	getline(std::cin, str);
 	if (str.length() != 1 || str[0] < '0' || str[0] >= '0' + i)
 		return ;
 	this->contacts[str[0] - '0'].show();

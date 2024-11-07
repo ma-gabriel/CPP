@@ -2,11 +2,11 @@
 #include "Contact.class.hpp"
 
 
-Contact::Contact(string first_name, 
-				 string last_name,
-				 string nickname,
-				 string phone_number, 
-				 string darkest_secret)
+Contact::Contact(std::string first_name, 
+				 std::string last_name,
+				 std::string nickname,
+				 std::string phone_number, 
+				 std::string darkest_secret)
 {
 	this->first_name = first_name;
 	this->last_name = last_name;
@@ -25,11 +25,11 @@ Contact::Contact(void)
 }
 void Contact::show(void)
 {
-	cout << "first name: " << first_name << endl;
-	cout << "last name: " << last_name << endl;
-	cout << "nickname: " << nickname << endl;
-	cout << "phone number: " << phone_number << endl;
-	cout << "darkest secret: " << darkest_secret << endl;
+	std::cout << "first name: " << first_name << std::endl;
+	std::cout << "last name: " << last_name << std::endl;
+	std::cout << "nickname: " << nickname << std::endl;
+	std::cout << "phone number: " << phone_number << std::endl;
+	std::cout << "darkest secret: " << darkest_secret << std::endl;
 }
 
 Contact::~Contact(void){}
