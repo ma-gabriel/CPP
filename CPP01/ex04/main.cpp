@@ -2,6 +2,18 @@
 #include <iostream>
 #include <fstream>
 
+static std::string replace(std::string &str, const std::string s1, const std::string s2)
+{
+    ssize_t i = str.find(s1);
+
+    while (i != -1){
+        str = str.substr(0, i) + s2 + str.substr(i + s1.length(), str.length());
+        i += s2.length() - s1.length() + 1;
+        i = str.find(s1, i);
+    }
+    return (str);
+}
+
 int main(int argc, char **argv)
 {
     if (argc != 4) {
@@ -15,24 +27,21 @@ int main(int argc, char **argv)
         return (1);
     }
 
-    std::ofstream outfile ((std::string) argv[1] + (std::string)".replace");
+    std::ofstream outfile ((std::string (argv[1]) + ".replace").c_str());
     if (not outfile.is_open()) {
         std::cerr << "The outfile can't be created/opened\n";
         return (1);
     }
 
-    std::string res;
-    getline(infile, res, '\0');
+    std::string res((std::istreambuf_iterator<char>(infile)),
+                       std::istreambuf_iterator<char>());
     infile.close();
 
-    std::string s1 = argv[2];
-    std::string s2 = argv[3];
-    for (int i = 0; i <= res.length(); i++){
-        if (res.substr(i, s1.length()) == s1){
-            res = res.substr(0, i) + s2 + res.substr(i + s1.length(), res.length());
-            i += s2.length() - s1.length();
-        }
-    }
+    const std::string s1 = argv[2];
+    const std::string s2 = argv[3];
+
+    replace(res, s1, s2);
 
     outfile << res;
+    outfile.close();
 }

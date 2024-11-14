@@ -4,15 +4,15 @@ SRCS =	main.cpp \
 		randomChump.cpp \
 		Zombie.cpp
 
-OBJECTS = $(SRCS:.cpp=.opp)
-
 HEADERS = Zombie.hpp
+
+OBJECTS = $(SRCS:.cpp=.opp)
 
 NAME = brainz
 
 CXX = c++
 
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -std=c++98
 
 %.opp: %.cpp Makefile $(HEADERS)
 	$(CXX) $(CFLAGS) -c $< -o $@ -I.

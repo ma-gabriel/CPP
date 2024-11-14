@@ -6,13 +6,15 @@ SRCS =	main.cpp \
 
 OBJECTS = $(SRCS:.cpp=.opp)
 
-HEADERS = Weapon.hpp
+HEADERS = Weapon.hpp \
+		  HumanA.hpp \
+		  HumanB.hpp
 
 NAME = weapon
 
 CXX = c++
 
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -std=c++98
 
 %.opp: %.cpp Makefile $(HEADERS)
 	$(CXX) $(CFLAGS) -c $< -o $@ -I.

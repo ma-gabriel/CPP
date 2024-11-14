@@ -3,20 +3,22 @@ SRCS =	main.cpp \
 		Zombie.cpp \
 		zombieHorde.cpp
 
+HEADERS = Zombie.hpp
+
 OBJECTS = $(SRCS:.cpp=.opp)
 
 NAME = horde
 
 CXX = c++
 
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -std=c++98
 
-%.opp: %.cpp
+%.opp: %.cpp Makefile $(HEADERS)
 	$(CXX) $(CFLAGS) -c $< -o $@ -I.
 
 all: $(NAME)
 
-$(NAME): $(OBJECTS) Makefile
+$(NAME): $(OBJECTS)
 	$(CXX) $(OBJECTS) -o $(NAME) $(CFLAGS)
 
 clean:

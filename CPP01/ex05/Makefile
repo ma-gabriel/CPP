@@ -11,14 +11,14 @@ CXX = c++
 
 HEADERS =  Harl.hpp
 
-CPPFLAGS = -Wall -Wextra -Werror
+CPPFLAGS = -Wall -Wextra -Werror -std=c++98
 
-%.opp: %.cpp
+%.opp: %.cpp Makefile $(HEADERS)
 	$(CXX) $(CFLAGS) -c $< -o $@ -I.
 
 all: $(NAME)
 
-$(NAME): $(OBJECTS) Makefile $(HEADERS)
+$(NAME): $(OBJECTS)
 	$(CXX) $(OBJECTS) -o $(NAME) $(CFLAGS)
 
 clean:

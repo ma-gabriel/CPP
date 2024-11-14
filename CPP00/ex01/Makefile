@@ -12,14 +12,14 @@ NAME = PhoneBook
 
 CXX = c++
 
-CPPFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -std=c++98
 
-%.opp: %.cpp $(HEADERS)
+%.opp: %.cpp $(HEADERS) Makefile
 	$(CXX) $(CFLAGS) -c $< -o $@ -I.
 
 all: $(NAME)
 
-$(NAME): $(OBJECTS) Makefile
+$(NAME): $(OBJECTS)
 	$(CXX) $(OBJECTS) -o $(NAME) $(CFLAGS)
 
 clean:
