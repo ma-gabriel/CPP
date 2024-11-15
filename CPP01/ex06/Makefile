@@ -4,7 +4,7 @@ SRCS = main.cpp \
 
 OBJECTS = $(SRCS:.cpp=.o)
 
-NAME = ex05
+NAME = harlFilter
 
 CXX = c++
 
