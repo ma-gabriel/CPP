@@ -2,13 +2,18 @@
 #include <iostream>
 #include <fstream>
 
-static std::string replace(std::string &str, const std::string s1, const std::string s2)
+static std::string &replace(std::string &str, const std::string s1, const std::string s2)
 {
-    ssize_t i = str.find(s1);
+    if (s1.length() == 0){
+        std::cerr << "replace: cannot treat an empty string as first arg (file unchanged)" << std::endl;
+        return str;
+    }
 
-    while (i != -1){
+    size_t i = str.find(s1);
+
+    while (i != std::string::npos){
         str = str.substr(0, i) + s2 + str.substr(i + s1.length(), str.length());
-        i += s2.length() - s1.length() + 1;
+        i += s2.length();
         i = str.find(s1, i);
     }
     return (str);
@@ -35,6 +40,15 @@ int main(int argc, char **argv)
 
     std::string res((std::istreambuf_iterator<char>(infile)),
                        std::istreambuf_iterator<char>());
+    // std::string res;
+    // while (infile)
+    // {
+    //     std::string tmp;
+    //     std::getline(infile, tmp);
+    //     res += tmp;
+    //     if (infile)
+    //         res += "e";
+    // }
     infile.close();
 
     const std::string s1 = argv[2];
