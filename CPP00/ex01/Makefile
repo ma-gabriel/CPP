@@ -6,7 +6,7 @@ SRCS =	main.cpp \
 HEADERS =	PhoneBook.class.hpp \
 			Contact.class.hpp
 
-OBJECTS = $(SRCS:.cpp=.opp)
+OBJECTS = $(SRCS:.cpp=.o)
 
 NAME = PhoneBook
 
@@ -14,7 +14,7 @@ CXX = c++
 
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 
-%.opp: %.cpp $(HEADERS) Makefile
+%.o: %.cpp $(HEADERS) Makefile
 	$(CXX) $(CFLAGS) -c $< -o $@ -I.
 
 all: $(NAME)

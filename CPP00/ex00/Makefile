@@ -1,7 +1,7 @@
 
 SRCS = megaphone.cpp
 
-OBJECTS = $(SRCS:.cpp=.opp)
+OBJECTS = $(SRCS:.cpp=.o)
 
 NAME = megaphone
 
@@ -9,7 +9,7 @@ CXX = c++
 
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 
-%.opp: %.cpp Makefile
+%.o: %.cpp Makefile
 	$(CXX) $(CFLAGS) -c $< -o $@ -I.
 
 all: $(NAME)

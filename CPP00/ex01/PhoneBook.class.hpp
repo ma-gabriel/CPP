@@ -9,7 +9,7 @@ class PhoneBook {
 
 	private:
 		Contact contacts[8];
-		uint64_t index;
+		short index;
 		void print_str(std::string);
 	public:
 		PhoneBook(void);

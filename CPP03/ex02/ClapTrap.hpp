@@ -4,7 +4,7 @@
 # include <iostream>
 
 class ClapTrap {
-	private:
+	protected:
 		std::string     name;
         unsigned int    hp;
         unsigned int    ep;
@@ -13,8 +13,8 @@ class ClapTrap {
     public:
 		ClapTrap(std::string name);
 		ClapTrap(ClapTrap &ref);
-		~ClapTrap(void);
         ClapTrap &operator=(const ClapTrap &ref);
+		~ClapTrap(void);
         void attack(const std::string& target);
         void takeDamage(unsigned int amount);
         void beRepaired(unsigned int amount);

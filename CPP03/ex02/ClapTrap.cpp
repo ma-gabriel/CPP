@@ -4,7 +4,7 @@
 ClapTrap::ClapTrap(std::string name)
 {
     this->name = name;
-    std::cout << "Default constructor called for " << this->name << std::endl;
+    std::cout << "Default constructor (ClapTrap) called for " << this->name << std::endl;
     this->hp = 10;
     this->ep = 10;
     this->damages = 0;
@@ -13,14 +13,22 @@ ClapTrap::ClapTrap(std::string name)
 ClapTrap::ClapTrap(ClapTrap &ref)
 {
     this->name = ref.name;
-    std::cout << "Copy constructor called for " << this->name << std::endl;
+    std::cout << "Copy constructor (ClapTrap) called for " << this->name << std::endl;
     this->hp = ref.hp;
     this->ep = ref.ep;
     this->damages = ref.damages;
 }
 
 ClapTrap::~ClapTrap(){
-    std::cout << "Destructor called for " << this->name << std::endl;
+    std::cout << "Destructor (ClapTrap) called for " << this->name << std::endl;
+}
+
+ClapTrap &ClapTrap::operator=(const ClapTrap &ref){
+    this->name = ref.name;
+    this->hp = ref.hp;
+    this->ep = ref.ep;
+    this->damages = ref.damages;
+    return *this;
 }
 
 void ClapTrap::attack(const std::string& target)
@@ -34,15 +42,7 @@ void ClapTrap::attack(const std::string& target)
         return ;
     }
     this->ep--;
-    std::cout << "ClapTrap" << this->name << " wants to attack " << target << " for " << this->damages << std::endl;
-}
-
-ClapTrap &ClapTrap::operator=(const ClapTrap &ref){
-    this->name = ref.name;
-    this->hp = ref.hp;
-    this->ep = ref.ep;
-    this->damages = ref.damages;
-    return *this;
+    std::cout << "ClapTrap " << this->name << " wants to attack " << target << " for " << this->damages << std::endl;
 }
 
 void ClapTrap::takeDamage(unsigned int amount)

@@ -4,7 +4,7 @@ SRCS =	main.cpp \
 		Point.cpp \
 		bsp.cpp
 
-OBJECTS = $(SRCS:.cpp=.opp)
+OBJECTS = $(SRCS:.cpp=.o)
 
 HEADERS = Fixed.hpp \
 		  Point.hpp
@@ -15,7 +15,7 @@ CXX = c++
 
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 
-%.opp: %.cpp Makefile $(HEADERS)
+%.o: %.cpp Makefile $(HEADERS)
 	$(CXX) $(CFLAGS) -c $< -o $@ -I.
 
 all: $(NAME)

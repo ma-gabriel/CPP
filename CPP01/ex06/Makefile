@@ -12,7 +12,7 @@ HEADERS =  Harl.hpp
 
 CPPFLAGS = -Wall -Wextra -Werror -std=c++98
 
-%.opp: %.cpp Makefile $(HEADERS)
+%.o: %.cpp Makefile $(HEADERS)
 	$(CXX) $(CFLAGS) -c $< -o $@ -I.
 
 all: $(NAME)

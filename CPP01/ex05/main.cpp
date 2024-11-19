@@ -5,7 +5,7 @@
 int main(int argc, char **argv)
 {
 	Harl karen;
-	if (argc > 2)
+	if (argc > 1)
 		for (size_t i = 1; argv[i]; i++)
 			karen.complain(argv[i]);
 	else {

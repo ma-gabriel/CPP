@@ -6,7 +6,7 @@ SRCS =	main.cpp \
 
 HEADERS = Zombie.hpp
 
-OBJECTS = $(SRCS:.cpp=.opp)
+OBJECTS = $(SRCS:.cpp=.o)
 
 NAME = brainz
 
@@ -14,7 +14,7 @@ CXX = c++
 
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 
-%.opp: %.cpp Makefile $(HEADERS)
+%.o: %.cpp Makefile $(HEADERS)
 	$(CXX) $(CFLAGS) -c $< -o $@ -I.
 
 all: $(NAME)

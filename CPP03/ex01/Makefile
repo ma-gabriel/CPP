@@ -1,12 +1,14 @@
 
 SRCS =	main.cpp \
-		ClapTrap.cpp
+		ClapTrap.cpp \
+		ScavTrap.cpp
 
 OBJECTS = $(SRCS:.cpp=.o)
 
-HEADERS = ClapTrap.hpp
+HEADERS =	ClapTrap.hpp \
+			ScavTrap.hpp
 
-NAME = ex00
+NAME = ex01
 
 CXX = c++
 
