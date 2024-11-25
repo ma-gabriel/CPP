@@ -33,7 +33,7 @@ void PhoneBook::add(void){
 	this->index++;
 }
 
-void PhoneBook::print_str(std::string str){
+static void print_str(std::string str){
 	if (str.length() <= 10){
 		std::cout << std::setw(10) << str;
 	} else {
@@ -46,11 +46,11 @@ void PhoneBook::search(void){
 	std::cout << "       ID |first name| last name|  nickname\n";
 	for (i = 0; i < this->index && i < 8; i++){
 		std::cout << std::setw(10) << i << '|';
-		this->print_str(this->contacts[i].first_name);
+		print_str(this->contacts[i].getFirstName());
 		std::cout << '|';
-		this->print_str(this->contacts[i].last_name);
+		print_str(this->contacts[i].getLastName());
 		std::cout << '|';
-		this->print_str(this->contacts[i].nickname);
+		print_str(this->contacts[i].getNickname());
 		std::cout << std::endl;
 	}
 	std::string str;
