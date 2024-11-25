@@ -1,10 +1,10 @@
 
 SRCS =	main.cpp \
-		PhoneBook.class.cpp \
-		Contact.class.cpp
+		PhoneBook.cpp \
+		Contact.cpp
 
-HEADERS =	PhoneBook.class.hpp \
-			Contact.class.hpp
+HEADERS =	PhoneBook.hpp \
+			Contact.hpp
 
 OBJECTS = $(SRCS:.cpp=.o)
 

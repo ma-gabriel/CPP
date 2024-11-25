@@ -1,5 +1,5 @@
 // includes
-#include "PhoneBook.class.hpp"
+#include "PhoneBook.hpp"
 #include <iostream>
 #include <iomanip>
 

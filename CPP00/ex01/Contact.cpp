@@ -1,5 +1,5 @@
 
-#include "Contact.class.hpp"
+#include "Contact.hpp"
 
 
 Contact::Contact(std::string first_name, 

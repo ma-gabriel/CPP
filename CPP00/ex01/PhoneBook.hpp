@@ -1,9 +1,9 @@
 
-#ifndef PHONEBOOK_CLASS_HPP
-# define PHONEBOOK_CLASS_HPP
+#ifndef PHONEBOOK_HPP
+# define PHONEBOOK_HPP
 
 # include <iostream>
-# include "Contact.class.hpp"
+# include "Contact.hpp"
 
 class PhoneBook {
 
