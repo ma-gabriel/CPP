@@ -7,6 +7,7 @@ int main()
     jeanne.announce();
 
     Zombie *titouan = newZombie("titouan");
+	titouan->announce();
     
     randomChump("George");
 

@@ -2,28 +2,28 @@
 
 HumanB::HumanB(std::string name, Weapon weapon)
 {
-    this->name = name;
-    this->weaponPTR = &weapon;
+    _name = name;
+    _weaponPTR = &weapon;
 }
 
 HumanB::HumanB(std::string name)
 {
-    this->name = name;
-    this->weaponPTR = NULL;
+    _name = name;
+    _weaponPTR = NULL;
 }
 
 HumanB::~HumanB(){}
 
 void HumanB::setWeapon(Weapon &weapon)
 {
-    this->weaponPTR = &weapon;
+    _weaponPTR = &weapon;
 }
 
 void HumanB::attack()
 {
-    if (weaponPTR)
-        std::cout << this->name << " attacks with their " << (*(this->weaponPTR)).getType() << "\n";
+    if (_weaponPTR)
+        std::cout << _name << " attacks with their " << (*(_weaponPTR)).getType() << "\n";
     else
-        std::cout << this->name << " attacks with their bare fists\n";
+        std::cout << _name << " attacks with their bare fists\n";
 }
 
