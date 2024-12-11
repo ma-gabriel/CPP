@@ -2,32 +2,32 @@
 #include <iostream>
 
 Point::Point(){
-    this->x = 0;
-    this->y = 0;
+    _x = 0;
+    _y = 0;
 }
 
 Point::Point(const float x, const float y){
-    this->x = x;
-    this->y = y;
+    _x = x;
+    _y = y;
 }
 
 Point::Point(const Point &ref){
-    this->x = ref.x;
-    this->y = ref.y;
+    _x = ref._x;
+    _y = ref._y;
 }
 
 Point::~Point(){}
 
 Point &Point::operator=(const Point &ref){
-    this->x = ref.x;
-    this->y = ref.y;
+    _x = ref._x;
+    _y = ref._y;
     return *this;
 }
 
 Fixed Point::getX(void) const{
-    return this->x;
+    return _x;
 }
 
 Fixed Point::getY(void) const{
-    return this->y;
+    return _y;
 }

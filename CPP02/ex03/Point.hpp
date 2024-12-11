@@ -6,8 +6,8 @@
 
 class Point {
 	private:
-		Fixed	x;
-		Fixed	y;
+		Fixed	_x;
+		Fixed	_y;
     
     public:
 		Point();

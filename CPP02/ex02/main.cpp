@@ -10,6 +10,7 @@ int main( void ) {
     std::cout << "b is " << b << std::endl;
     std::cout << "c is " << c << std::endl;
     std::cout << "a != b is " << (a != b) << std::endl;
+    std::cout << "a != c is " << (a != c) << std::endl;
     std::cout << "a >= b is " << (a >= b) << std::endl;
     std::cout << "a <= b is " << (a <= b) << std::endl;
     std::cout << "a > b is " << (a > b) << std::endl;
