@@ -1,13 +1,13 @@
 #include "Fixed.hpp"
 #include <iostream>
 
-Fixed::Fixed(){
-    _value = 0;
+Fixed::Fixed()
+    : _value(0) {
     std::cout << "Default constructor called" << std::endl;
 }
 
-Fixed::Fixed(const Fixed &ref){
-    _value = ref._value;
+Fixed::Fixed(const Fixed &ref)
+    : _value(ref._value) {
     std::cout << "Copy constructor called" << std::endl;
 }
 

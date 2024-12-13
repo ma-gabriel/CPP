@@ -1,28 +1,28 @@
 #include "Fixed.hpp"
 #include <iostream>
 
-Fixed::Fixed(){
-    _value = 0;
-    //std::cout << "Default constructor called" << std::endl;
+Fixed::Fixed()
+    : _value(0) {
+    // std::cout << "Default constructor called" << std::endl;
 }
 
-Fixed::Fixed(const int ref){
-    _value = ref << _bits;
-    //std::cout << "Int constructor called" << std::endl;
+Fixed::Fixed(const Fixed &ref)
+    : _value(ref._value) {
+    // std::cout << "Copy constructor called" << std::endl;
 }
 
-Fixed::Fixed(const double ref){
-    _value = (int) (ref * (1 << _bits));
-    //std::cout << "Float constructor called" << std::endl;
+Fixed::Fixed(const double ref)
+    : _value((int) (ref * (1 << _bits))) {
+    // std::cout << "Float constructor called" << std::endl;
 }
 
-Fixed::Fixed(const Fixed &ref){
-    _value = ref._value;
-    //std::cout << "Copy constructor called" << std::endl;
+Fixed::Fixed(const int ref)
+    : _value(ref << _bits) {
+    // std::cout << "Int constructor called" << std::endl;
 }
 
 Fixed::~Fixed(){
-    //std::cout << "Destructor called" << std::endl;
+    // std::cout << "Destructor called" << std::endl;
 }
 
 Fixed &Fixed::operator=(const Fixed &ref){
@@ -50,7 +50,7 @@ int Fixed::toInt( void ) const{
 }
 
 std::ostream &operator<<(std::ostream & os, const Fixed &t){
-    os << (float) t._value / (1 << t._bits);
+    os << t.toFloat();
     return os;
 }
 

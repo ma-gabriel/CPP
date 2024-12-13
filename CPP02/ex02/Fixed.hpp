@@ -19,7 +19,6 @@ class Fixed {
 		float toFloat( void ) const;
 		int toInt( void ) const;
 		Fixed &operator=(const Fixed &ref);
-		friend std::ostream &operator<<(std::ostream & os, const Fixed &t);
 		bool operator==(const Fixed &ref);
 		bool operator>(const Fixed &ref);
 		bool operator<(const Fixed &ref);
@@ -41,5 +40,7 @@ class Fixed {
 		static Fixed &max(Fixed &a, Fixed &b);
 		static const Fixed &max(const Fixed &a, const Fixed &b);
 };
+
+std::ostream &operator<<(std::ostream & os, const Fixed &t);
 
 #endif
