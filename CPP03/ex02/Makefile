@@ -1,12 +1,14 @@
 
 SRCS =	main.cpp \
 		ClapTrap.cpp \
-		FragTrap.cpp
+		FragTrap.cpp \
+		ScavTrap.cpp
 
 OBJECTS = $(SRCS:.cpp=.o)
 
 HEADERS =	ClapTrap.hpp \
-			FragTrap.hpp
+			FragTrap.hpp \
+			ScavTrap.hpp
 
 NAME = ex02
 

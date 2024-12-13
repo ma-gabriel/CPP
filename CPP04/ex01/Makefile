@@ -3,14 +3,18 @@ SRCS =	main.cpp \
 		Animal.cpp \
 		Dog.cpp \
 		Cat.cpp \
-		Brain.cpp
+		Brain.cpp \
+		WrongAnimal.cpp \
+		WrongCat.cpp
 
 OBJECTS = $(SRCS:.cpp=.o)
 
 HEADERS =	Animal.hpp \
 			Dog.hpp \
 			Cat.hpp \
-			Brain.hpp
+			Brain.hpp \
+			WrongAnimal.hpp \
+			WrongCat.hpp
 
 NAME = ex01
 
