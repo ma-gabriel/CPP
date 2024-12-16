@@ -22,12 +22,16 @@ int main()
     std::cout << array[nb]->getType() << " at index " << nb << " says ";
     array[nb]->makeSound();
 
-	dynamic_cast<Cat *> (array[nb])->setIdeaAt(0, "We should cure cancer");
-	std::cout << "cat at index " << nb << " says : " << dynamic_cast<Cat *> (array[nb])->getIdeaAt(0) << std::endl;
-	Cat george = *dynamic_cast<Cat *> (array[nb]);
+    Cat *ptr = dynamic_cast<Cat *> (array[nb]);
 
-	dynamic_cast<Cat *> (array[nb])->setIdeaAt(0, "i forgot");
-	std::cout << "cat at index " << nb << " forgot his brillant indea" << std::endl;
+    // For lecture comfort, i'll use as dynamic_cast<Cat *> (array[nb])
+    // It is only a pointer, so still the same variable, same Cat
+	ptr->setIdeaAt(0, "We should cure cancer");
+	std::cout << "cat at index " << nb << " says : " << ptr->getIdeaAt(0) << std::endl;
+	Cat george = *ptr;
+
+	ptr->setIdeaAt(0, "i forgot");
+	std::cout << "cat at index " << nb << " forgot his brillant idea" << std::endl;
 	std::cout << "geoge says : " << george.getIdeaAt(0) << std::endl;
 	std::cout << "Yay, deep Copy"<< std::endl;
 	std::cout << std::endl;
