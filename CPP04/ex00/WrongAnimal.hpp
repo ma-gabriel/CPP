@@ -1,15 +1,15 @@
 #ifndef WRONGANIMAL_HPP
 # define WRONGANIMAL_HPP
 
-# include <ostream>
+# include <string>
 
 class WrongAnimal {
 	protected:
-		std::string type;
+		std::string _type;
     
     public:
 		WrongAnimal(void);
-		WrongAnimal(std::string type);
+		WrongAnimal(const std::string &type);
 		WrongAnimal(const WrongAnimal &ref);
 		WrongAnimal &operator=(const WrongAnimal &ref);
 		~WrongAnimal(void);

@@ -1,13 +1,10 @@
 #ifndef WRONGCAT_HPP
 # define WRONGCAT_HPP
 
-# include <ostream>
+# include <string>
 # include "WrongAnimal.hpp"
 
 class WrongCat : public WrongAnimal {
-	protected:
-		std::string type;
-    
     public:
 		WrongCat(void);
 		WrongCat(const WrongCat &ref);

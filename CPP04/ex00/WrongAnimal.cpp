@@ -2,17 +2,17 @@
 #include <iostream>
 
 WrongAnimal::WrongAnimal(){
-    this->type = "";
+    _type = "";
     std::cout << "Default constructor called for WrongAnimal" << std::endl;
 }
 
-WrongAnimal::WrongAnimal(std::string type){
-    this->type = type;
+WrongAnimal::WrongAnimal(const std::string &type){
+    _type = type;
     std::cout << "std::string constructor called for WrongAnimal" << std::endl;
 }
 
 WrongAnimal::WrongAnimal(const WrongAnimal &ref){
-    this->type = ref.type;
+    _type = ref._type;
     std::cout << "Copy constructor called WrongAnimal" << std::endl;
 }
 
@@ -22,12 +22,12 @@ WrongAnimal::~WrongAnimal(){
 
 WrongAnimal &WrongAnimal::operator=(const WrongAnimal &ref){
     std::cout << "Copy assignement operator called for WrongAnimal" << std::endl;
-    this->type = ref.type;
+    _type = ref._type;
     return *this;
 }
 
 std::string WrongAnimal::getType(void) const{
-    return this->type;
+    return _type;
 }
 
 void WrongAnimal::makeSound(void) const{

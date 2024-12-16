@@ -1,14 +1,13 @@
 #ifndef DOG_HPP
 # define DOG_HPP
 
-# include <ostream>
+# include <string>
 # include "Animal.hpp"
 # include "Brain.hpp"
 
-class Dog : public Animal{
-	protected:
-		std::string type;
-		Brain *brain;
+class Dog : public Animal {
+	private:
+		Brain *_brain;
     
     public:
 		Dog(void);
@@ -16,6 +15,9 @@ class Dog : public Animal{
 		Dog &operator=(const Dog &ref);
 		~Dog(void);
 		void makeSound(void) const;
+
+		void setIdeaAt(unsigned int index, const std::string &idea);
+		std::string &getIdeaAt(unsigned int index);
 };
 
 #endif

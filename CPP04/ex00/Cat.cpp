@@ -1,12 +1,13 @@
 #include "Cat.hpp"
 #include <iostream>
 
-Cat::Cat() : Animal("Cat") {
+Cat::Cat(): Animal("Cat"){
     std::cout << "Default constructor called for Cat" << std::endl;
 }
 
-Cat::Cat(const Cat &ref): Animal(ref){
-    this->type = ref.type;
+Cat::Cat(const Cat &ref): Animal(ref)
+{
+    _type = ref._type;
     std::cout << "Copy constructor called Cat" << std::endl;
 }
 
@@ -16,11 +17,10 @@ Cat::~Cat(){
 
 Cat &Cat::operator=(const Cat &ref){
     std::cout << "Copy assignement operator called for Cat" << std::endl;
-    this->type = ref.type;
+    _type = ref._type;
     return *this;
 }
 
-
 void Cat::makeSound(void) const{
-    std::cout << "MIAOW MIAOW" << std::endl;
+    std::cout << "MEOW MEOW" << std::endl;
 }

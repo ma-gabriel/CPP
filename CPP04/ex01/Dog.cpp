@@ -3,28 +3,35 @@
 #include <iostream>
 
 Dog::Dog(): Animal("Dog"){
-    this->brain = new Brain();
-    std::cout << "Default constructor called for Dog" << std::endl;
+    _brain = new Brain();
+    //std::cout << "Default constructor called for Dog" << std::endl;
 }
 
 Dog::Dog(const Dog &ref): Animal(ref){
-    this->type = ref.type;
-    this->brain = new Brain(*ref.brain);
-    std::cout << "Copy constructor called Dog" << std::endl;
+    _type = ref._type;
+    _brain = new Brain(*ref._brain);
+    //std::cout << "Copy constructor called Dog" << std::endl;
 }
 
 Dog::~Dog(){
-    delete brain;
-    std::cout << "Destructor called for Dog" << std::endl;
+    delete _brain;
+    //std::cout << "Destructor called for Dog" << std::endl;
 }
 
 Dog &Dog::operator=(const Dog &ref){
-    std::cout << "Copy assignement operator called for Dog" << std::endl;
-    this->type = ref.type;
+    //std::cout << "Copy assignement operator called for Dog" << std::endl;
+    _type = ref._type;
     return *this;
 }
 
-
 void Dog::makeSound(void) const{
     std::cout << "Barks intensivly" << std::endl;
+}
+
+std::string &Dog::getIdeaAt(unsigned int index){
+	return _brain->getIdeaAt(index);
+}
+
+void Dog::setIdeaAt(unsigned int index, const std::string &idea){
+	_brain->setIdeaAt(index, idea);
 }

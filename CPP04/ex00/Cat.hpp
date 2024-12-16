@@ -1,19 +1,16 @@
 #ifndef CAT_HPP
 # define CAT_HPP
 
-# include <ostream>
+# include <string>
 # include "Animal.hpp"
 
 class Cat : public Animal {
-	protected:
-		std::string type;
-    
-    public:
+	public:
 		Cat(void);
 		Cat(const Cat &ref);
 		Cat &operator=(const Cat &ref);
-		~Cat(void);
-		void makeSound(void) const;
+		virtual ~Cat(void);
+		virtual void makeSound(void) const;
 };
 
 #endif
