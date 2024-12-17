@@ -22,6 +22,7 @@ Cat::~Cat(){
 Cat &Cat::operator=(const Cat &ref){
     //std::cout << "Copy assignement operator called for Cat" << std::endl;
     _type = ref._type;
+	*_brain = *ref._brain;
     return *this;
 }
 

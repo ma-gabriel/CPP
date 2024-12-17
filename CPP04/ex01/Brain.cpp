@@ -19,15 +19,15 @@ Brain::~Brain(){
 
 Brain &Brain::operator=(const Brain &ref){
     //std::cout << "Copy assignement operator called for Brain" << std::endl;
-    for (size_t i = 0; i < sizeof(_ideas) / sizeof(std::string); i++)
+    for (size_t i = 0; i < 100; i++)
         _ideas[i] = ref._ideas[i];
     return *this;
 }
 
 void Brain::setIdeaAt(unsigned int index, const std::string &idea){
-	_ideas[index % (sizeof(_ideas) / sizeof(std::string))] = idea;
+	_ideas[index % 100] = idea;
 }
 
 std::string &Brain::getIdeaAt(unsigned int index){
-	return (_ideas[index % (sizeof(_ideas) / sizeof(std::string))]);
+	return (_ideas[index % 100]);
 }

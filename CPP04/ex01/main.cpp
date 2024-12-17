@@ -28,7 +28,11 @@ int main()
     // It is only a pointer, so still the same variable, same Cat
 	ptr->setIdeaAt(0, "We should cure cancer");
 	std::cout << "cat at index " << nb << " says : " << ptr->getIdeaAt(0) << std::endl;
-	Cat george = *ptr;
+
+	Cat george;
+	//std::cout << "geoge says : " << george.getIdeaAt(0) << std::endl;
+	george = *ptr;
+	std::cout << "george learned everything from Cat at index 1" << std::endl;
 
 	ptr->setIdeaAt(0, "i forgot");
 	std::cout << "cat at index " << nb << " forgot his brillant idea" << std::endl;

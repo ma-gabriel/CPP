@@ -2,32 +2,32 @@
 #include <iostream>
 
 Brain::Brain(){
-    std::cout << "Default constructor called for Brain" << std::endl;
+    //std::cout << "Default constructor called for Brain" << std::endl;
     for (size_t i = 0; i < sizeof(_ideas) / sizeof(std::string); i++)
         _ideas[i] = std::string();
 }
 
 Brain::Brain(const Brain &ref){
-    std::cout << "Copy constructor called Brain" << std::endl;
+    //std::cout << "Copy constructor called Brain" << std::endl;
     for (size_t i = 0; i < sizeof(_ideas) / sizeof(std::string); i++)
         _ideas[i] = ref._ideas[i];
 }
 
 Brain::~Brain(){
-    std::cout << "Destructor called for Brain" << std::endl;
+    //std::cout << "Destructor called for Brain" << std::endl;
 }
 
 Brain &Brain::operator=(const Brain &ref){
-    std::cout << "Copy assignement operator called for Brain" << std::endl;
-    for (size_t i = 0; i < sizeof(_ideas) / sizeof(std::string); i++)
+    //std::cout << "Copy assignement operator called for Brain" << std::endl;
+    for (size_t i = 0; i < 100; i++)
         _ideas[i] = ref._ideas[i];
     return *this;
 }
 
 void Brain::setIdeaAt(unsigned int index, const std::string &idea){
-	_ideas[index % (sizeof(_ideas) / sizeof(std::string))] = idea;
+	_ideas[index % 100] = idea;
 }
 
 std::string &Brain::getIdeaAt(unsigned int index){
-	return (_ideas[index % (sizeof(_ideas) / sizeof(std::string))]);
+	return (_ideas[index % 100]);
 }

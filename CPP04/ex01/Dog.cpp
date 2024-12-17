@@ -21,6 +21,7 @@ Dog::~Dog(){
 Dog &Dog::operator=(const Dog &ref){
     //std::cout << "Copy assignement operator called for Dog" << std::endl;
     _type = ref._type;
+	*_brain = *ref._brain;
     return *this;
 }
 
