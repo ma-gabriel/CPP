@@ -1,14 +1,15 @@
 
 #include <iostream>
 #include "Bureaucrat.hpp"
+#include "AForm.hpp"
+#include "forms/ShrubberyCreationForm.hpp"
 
 int main()
 {
 	try
 	{
-		Bureaucrat George("George", 150);
-		std::cout << "About to decrement " << George << std::endl;
-		George.decrementGrade();
+		ShrubberyCreationForm test;
+		test.execute();
 	}
 	catch (std::exception & e)
 	{

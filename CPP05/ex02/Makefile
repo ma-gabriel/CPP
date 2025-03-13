@@ -1,12 +1,16 @@
 
 SRCS =	main.cpp \
-		Bureaucrat.cpp
+		Bureaucrat.cpp \
+		AForm.cpp \
+		forms/ShrubberyCreationForm
 
 OBJECTS = $(SRCS:.cpp=.o)
 
-HEADERS =	Bureaucrat.hpp
+HEADERS =	Bureaucrat.hpp \
+			AForm.hpp\
+			forms/ShrubberyCreationForm
 
-NAME = ex00
+NAME = ex02
 
 CXX = c++
 
