@@ -3,7 +3,8 @@
 # define AFORM_HPP
 
 # include <string>
-class Bureaucrat;
+# include <iostream>
+# include "Bureaucrat.hpp"
 
 class AForm {
 	private:
@@ -12,6 +13,7 @@ class AForm {
 		const short _execGrade;
         bool _isSigned;
 		AForm &operator=(const AForm &ref);
+		virtual void concreteExcecute(void) = 0;
 
 	public:
 		AForm(void);
@@ -22,13 +24,17 @@ class AForm {
 		const short &getSignGrade(void) const;
 		const short &getExecGrade(void) const;
 		const bool &getIsSigned(void) const;
-		virtual void execute(Bureaucrat const & executor) = 0;
+		void execute(Bureaucrat const & executor);
         virtual void beSigned(const Bureaucrat &signer);
 		class GradeTooHighException: public std::exception {
 			public:
   				const char* what() const throw();
 		};
 		class GradeTooLowException: public std::exception {
+			public:
+  				const char* what() const throw();
+		};
+		class isNotSignedException: public std::exception {
 			public:
   				const char* what() const throw();
 		};

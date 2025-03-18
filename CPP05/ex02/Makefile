@@ -2,13 +2,17 @@
 SRCS =	main.cpp \
 		Bureaucrat.cpp \
 		AForm.cpp \
-		forms/ShrubberyCreationForm
+		forms/ShrubberyCreationForm.cpp \
+		forms/RobotomyRequestForm.cpp \
+		forms/PresidentialPardonForm.cpp
 
 OBJECTS = $(SRCS:.cpp=.o)
 
 HEADERS =	Bureaucrat.hpp \
 			AForm.hpp\
-			forms/ShrubberyCreationForm
+			forms/ShrubberyCreationForm.hpp \
+			forms/RobotomyRequestForm.hpp \
+			forms/PresidentialPardonForm.hpp
 
 NAME = ex02
 
@@ -17,7 +21,7 @@ CXX = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 
 %.o: %.cpp Makefile $(HEADERS)
-	$(CXX) $(CFLAGS) -c $< -o $@ -I.
+	$(CXX) $(CFLAGS) -c $< -o $@ -I. -Iforms
 
 all: $(NAME)
 

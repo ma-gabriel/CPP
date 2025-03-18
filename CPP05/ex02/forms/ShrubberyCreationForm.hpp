@@ -3,17 +3,17 @@
 # define SHRUBBERYCREATIONFORM_HPP
 
 # include <string>
-# include "../AForm.hpp"
+# include "AForm.hpp"
 
 class ShrubberyCreationForm : public AForm {
 	private:
 		std::string _target;
+		virtual void concreteExcecute(void);
 
 	public:
 		ShrubberyCreationForm();
 		ShrubberyCreationForm(const std::string &target);
 		~ShrubberyCreationForm();
-		virtual void execute(Bureaucrat const & executor);
 };
 
 #endif

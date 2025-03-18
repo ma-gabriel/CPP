@@ -1,4 +1,5 @@
 #include "Bureaucrat.hpp"
+#include "AForm.hpp"
 #include <iostream>
 
 
@@ -59,11 +60,25 @@ const short &Bureaucrat::incrementGrade(void) {
 void Bureaucrat::signForm(AForm &form)
 {
     if (form.getSignGrade() < _grade){
-        std::cout << this->_name << " couldn’t sign " << form.getName() << " because the form need higher grade" << std::endl;
+        std::cout << _name << " couldn’t sign " << form.getName() << " because the form need higher grade" << std::endl;
         return ;
     }
     form.beSigned(*this);
-    std::cout <<  this->_name << " signed " << form.getName() << std::endl;
+    std::cout <<  _name << " signed " << form.getName() << std::endl;
+}
+
+void Bureaucrat::execForm(AForm &form)
+{
+    if (form.getIsSigned() == false){
+        std::cout << _name << " couldn’t execute " << form.getName() << " because the form need to be signed" << std::endl;
+        return ;
+    }
+    if (form.getExecGrade() < _grade){
+        std::cout << _name << " couldn’t execute " << form.getName() << " because the form need higher grade" << std::endl;
+        return ;
+    }
+    form.execute(*this);
+    std::cout <<  _name << " executed " << form.getName() << std::endl;
 }
 
 const char *Bureaucrat::GradeTooHighException::what() const throw()

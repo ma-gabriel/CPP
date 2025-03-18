@@ -3,7 +3,8 @@
 # define BUREAUCRAT_HPP
 
 # include <string>
-# include "AForm.hpp"
+
+class AForm;
 
 class Bureaucrat {
 	private:
@@ -22,6 +23,7 @@ class Bureaucrat {
 		const short &decrementGrade(void);
 		const short &incrementGrade(void);
 		void signForm(AForm &form);
+		void execForm(AForm &form);
 		class GradeTooHighException: public std::exception {
 			public:
   				const char* what() const throw();
