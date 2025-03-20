@@ -19,7 +19,7 @@ int main()
 		std::cout << "I am just better" << std::endl;
 		George.execForm(test);
 
-		Bureaucrat President("Eliot", 1);
+		Bureaucrat President("Céline", 1);
 		RobotomyRequestForm robot("The stuff to robotomize");
 		President.signForm(robot);
 		for (int i = 0; i < 10; i++)
