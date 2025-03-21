@@ -8,7 +8,9 @@
 class RobotomyRequestForm : public AForm {
 	private:
 		std::string _target;
-		virtual void concreteExcecute(void);
+		void concreteExcecute(void) const;
+		RobotomyRequestForm &operator=(const AForm &original);
+		RobotomyRequestForm(const RobotomyRequestForm &original);
 
 	public:
 		RobotomyRequestForm();

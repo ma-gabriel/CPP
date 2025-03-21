@@ -19,7 +19,17 @@ RobotomyRequestForm::RobotomyRequestForm(const std::string &target)
 RobotomyRequestForm::~RobotomyRequestForm()
 {}
 
-void RobotomyRequestForm::concreteExcecute(void)
+RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm &ref)
+    : AForm("RobotomyRequestForm", 145, 137), _target(ref._target)
+{}
+
+RobotomyRequestForm &RobotomyRequestForm::operator=(const AForm &ref)
+{
+    (void) ref;
+    //does basically nothing, thus private
+    return *this;
+}
+void RobotomyRequestForm::concreteExcecute(void) const
 {
     std::cout << "*drilling noises*\n";
     if (std::rand() & 1)

@@ -13,19 +13,19 @@ class AForm {
 		const short _execGrade;
         bool _isSigned;
 		AForm &operator=(const AForm &ref);
-		virtual void concreteExcecute(void) = 0;
+		AForm(const AForm &ref);
+		virtual void concreteExcecute(void) const = 0;
 
 	public:
 		AForm(void);
-		AForm(const AForm &ref);
 		AForm(const std::string &name, const short &signGrade, const short &execGrade);
 		virtual ~AForm(void);
 		const std::string &getName(void) const;
 		const short &getSignGrade(void) const;
 		const short &getExecGrade(void) const;
 		const bool &getIsSigned(void) const;
-		void execute(Bureaucrat const & executor);
-        virtual void beSigned(const Bureaucrat &signer);
+		void execute(Bureaucrat const & executor) const;
+        void beSigned(const Bureaucrat &signer);
 		class GradeTooHighException: public std::exception {
 			public:
   				const char* what() const throw();

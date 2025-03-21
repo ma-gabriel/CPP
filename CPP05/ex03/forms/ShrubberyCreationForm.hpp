@@ -8,7 +8,9 @@
 class ShrubberyCreationForm : public AForm {
 	private:
 		std::string _target;
-		virtual void concreteExcecute(void);
+		void concreteExcecute(void) const;
+		ShrubberyCreationForm &operator=(const AForm &ref);
+		ShrubberyCreationForm(const ShrubberyCreationForm &ref);
 
 	public:
 		ShrubberyCreationForm();

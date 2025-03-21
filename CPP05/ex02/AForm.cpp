@@ -17,22 +17,9 @@ AForm::AForm(const std::string &name, const short &signGrade, const short &execG
     std::cout << "Full constructor called for Form" << std::endl;
 }
 
-AForm::AForm(const AForm &ref)
-	:_name(ref._name), _signGrade(ref._signGrade), _execGrade(ref._execGrade), _isSigned(false)
-{
-    std::cout << "Copy constructor called AForm" << std::endl;
-}
-
 AForm::~AForm(){
     std::cout << "Destructor called for AForm" << std::endl;
 }
-
-AForm &AForm::operator=(const AForm &ref){
-    (void) ref;
-    std::cout << "Copy assignement operator (doesn't do anything) called for AForm " << _name << std::endl;
-    return *this;
-}
-
 
 const std::string &AForm::getName(void) const {
     return _name;
@@ -56,7 +43,7 @@ void AForm::beSigned(const Bureaucrat &signer)
     _isSigned = true;
 }
 
-void AForm::execute(Bureaucrat const & executor)
+void AForm::execute(Bureaucrat const & executor) const
 {
     if (getIsSigned() == false) throw isNotSignedException();
     if (executor.getGrade() > getExecGrade()) throw GradeTooLowException();
