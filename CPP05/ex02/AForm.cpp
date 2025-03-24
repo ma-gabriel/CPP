@@ -9,6 +9,12 @@ AForm::AForm()
     std::cout << "Default constructor called for AForm" << std::endl;
 }
 
+AForm &AForm::operator=(const AForm &ref){
+    (void) ref;
+    std::cout << "Copy assignement operator (doesn't do anything) called for Form " << _name << std::endl;
+    return *this;
+}
+
 AForm::AForm(const std::string &name, const short &signGrade, const short &execGrade)
 	:_name(name), _signGrade(signGrade), _execGrade(execGrade), _isSigned(false)
 {
@@ -40,12 +46,13 @@ const bool &AForm::getIsSigned(void) const {
 void AForm::beSigned(const Bureaucrat &signer)
 {
     if (signer.getGrade() > _signGrade) throw GradeTooLowException();
+    if (_isSigned == true) throw IsAlreadySigned();
     _isSigned = true;
 }
 
 void AForm::execute(Bureaucrat const & executor) const
 {
-    if (getIsSigned() == false) throw isNotSignedException();
+    if (getIsSigned() == false) throw IsNotSignedException();
     if (executor.getGrade() > getExecGrade()) throw GradeTooLowException();
     
     concreteExcecute();
@@ -61,9 +68,14 @@ const char *AForm::GradeTooLowException::what() const throw()
     return "Grade is too low";
 }
 
-const char *AForm::isNotSignedException::what() const throw()
+const char *AForm::IsNotSignedException::what() const throw()
 {
     return "Form is not signed";
+}
+
+const char *AForm::IsAlreadySigned::what() const throw()
+{
+    return "Form was already signed";
 }
 
 std::ostream &operator<<(std::ostream & os, const AForm &t)

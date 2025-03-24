@@ -59,6 +59,10 @@ const short &Bureaucrat::incrementGrade(void) {
 
 void Bureaucrat::signForm(AForm &form)
 {
+    if (form.getIsSigned() == true){
+        std::cout << _name << " couldn’t sign " << form.getName() << " because the form is already signed" << std::endl;
+        return ;
+    }
     if (form.getSignGrade() < _grade){
         std::cout << _name << " couldn’t sign " << form.getName() << " because the form need higher grade" << std::endl;
         return ;
