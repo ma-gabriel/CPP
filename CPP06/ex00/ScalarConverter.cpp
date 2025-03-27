@@ -54,7 +54,7 @@ static void convert_c(char *s)
     else if (std::isprint(c))
         std::cout << "char: '" << c << "'\n";
     else
-        std::cout << "char: non displayble\n";
+        std::cout << "char: non displayable\n";
 }
 
 static void convert_f(std::string s)
@@ -70,7 +70,7 @@ static void convert_f(std::string s)
     else if (errno == ERANGE && f == -std::numeric_limits<float>::max())
         std::cout << "float: -inff\n";
     else
-        std::cout << "float: NaNf\n";
+        std::cout << "float: nanf\n";
 }
 
 static void convert_d(std::string s)
@@ -86,5 +86,5 @@ static void convert_d(std::string s)
     else if (errno == ERANGE && d == -std::numeric_limits<double>::max())
         std::cout << "double: -inf" << std::endl;
     else
-        std::cout << "double: NaN" << std::endl;
+        std::cout << "double: nan" << std::endl;
 }

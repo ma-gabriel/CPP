@@ -9,10 +9,7 @@ int main()
 	Data original(0);
 
 
-	Data copy = 16;
-	std::cout << (original == copy ? "true" : "false") << std::endl;
-
-	copy = *(Serializer::deserialize(Serializer::serialize(&original)));
-	std::cout << (original == copy ? "true" : "false") << std::endl;
-
+	Data *copy = Serializer::deserialize(Serializer::serialize(&original));
+	std::cout << "there is " << (original == *copy ? "the same" : "a different") << " value" << std::endl;
+	std::cout << "there is " << (&original == copy ? "the same" : "a different") << " address" << std::endl;
 }
