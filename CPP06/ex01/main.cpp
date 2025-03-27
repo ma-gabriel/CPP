@@ -1,12 +1,18 @@
 
 #include <iostream>
-#include "Bureaucrat.hpp"
+#include "Data.hpp"
+#include "Serializer.hpp"
 
-int main(int argc, char ** argv)
+
+int main()
 {
-	if (argc == 1) std::cerr << "please we need an argument" << std::endl;
-	if (argc > 2) std::cerr << "please we need only one argument" << std::endl;
-	if (argc != 2) return 1;
+	Data original(0);
 
-	
+
+	Data copy = 16;
+	std::cout << (original == copy ? "true" : "false") << std::endl;
+
+	copy = *(Serializer::deserialize(Serializer::serialize(&original)));
+	std::cout << (original == copy ? "true" : "false") << std::endl;
+
 }

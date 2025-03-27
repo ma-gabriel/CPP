@@ -1,9 +1,10 @@
 
-SRCS =	main.cpp 
+SRCS =	main.cpp \
+		ScalarConverter.cpp
 
 OBJECTS = $(SRCS:.cpp=.o)
 
-HEADERS =	Bureaucrat.hpp
+HEADERS =	ScalarConverter.hpp
 
 NAME = convert
 

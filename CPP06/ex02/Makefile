@@ -1,21 +1,27 @@
 
 SRCS =	main.cpp \
-		Data.cpp \
-		Serializer.cpp
+		utils.cpp \
+		Base.cpp \
+		ABC/A.cpp \
+		ABC/B.cpp \
+		ABC/C.cpp
 
 OBJECTS = $(SRCS:.cpp=.o)
 
-HEADERS =	Serializer.hpp \
-			Data.hpp
+HEADERS =	utils.hpp \
+			Base.hpp \
+			ABC/A.hpp \
+			ABC/B.hpp \
+			ABC/C.hpp
 
-NAME = ex01
+NAME = ex02
 
 CXX = c++
 
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 
 %.o: %.cpp Makefile $(HEADERS)
-	$(CXX) $(CFLAGS) -c $< -o $@ -I.
+	$(CXX) $(CFLAGS) -c $< -o $@ -I. -IABC
 
 all: $(NAME)
 
