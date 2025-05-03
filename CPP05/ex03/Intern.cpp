@@ -45,7 +45,7 @@ AForm *Intern::makeForm(std::string form, std::string target){
 	for (int i = 0; i < 3; i++)
 		if (breakpoints[i] == form)
 			return (funcs[i])(target);
-    std::cout << "Sorry boss i don't knwo what \"" << form << "\" form is." << std::endl;
+    std::cout << "Sorry boss i don't know what \"" << form << "\" form is." << std::endl;
     return NULL;
 }
 

@@ -6,17 +6,17 @@ template <typename T>
 class Array{
 	private:
 		T* _arr;
-		size_t _len;
+		unsigned int _len;
 	
 	public:
 		Array();
 		Array(int n);
 		Array(const Array &);
 		~Array();
-		T& operator[](size_t);
-		const T& operator[](size_t) const;
+		T& operator[](unsigned int);
+		const T& operator[](unsigned int) const;
 		Array<T> &operator=(const Array &);
-		size_t size(void) const;
+		unsigned int size(void) const;
 };
 
 
@@ -34,7 +34,7 @@ template<typename T>
 Array<T>::Array(const Array &ref)
 	:_arr(new T[ref.size()]), _len(ref.size())
 {
-	for (size_t i = 0; i < _len; i++)
+	for (unsigned int i = 0; i < _len; i++)
 		this->_arr[i] = ref[i];
 }
 
@@ -45,7 +45,7 @@ Array<T>::~Array()
 }
 
 template<typename T>
-T& Array<T>::operator[](size_t index)
+T& Array<T>::operator[](unsigned int index)
 {
 	if (index >= _len)
 		throw std::exception();
@@ -53,7 +53,7 @@ T& Array<T>::operator[](size_t index)
 }
 
 template<typename T>
-const T& Array<T>::operator[](size_t index) const
+const T& Array<T>::operator[](unsigned int index) const
 {
 	if (index >= _len)
 		throw std::exception();
@@ -66,13 +66,13 @@ Array<T> &Array<T>::operator=(const Array &ref)
 	delete[] _arr;
 	_len = ref.size();
 	_arr = new T[_len];
-	for (size_t i = 0; i < _len; i++)
+	for (unsigned int i = 0; i < _len; i++)
 		this->_arr[i] = ref[i];
 	return (*this);
 }
 
 template<typename T>
-size_t Array<T>::size(void) const
+unsigned int Array<T>::size(void) const
 {
 	return _len;
 }

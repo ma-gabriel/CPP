@@ -6,7 +6,7 @@ int main()
 {
 	Array<int> a(10);
 
-	for (size_t i = 0; i < a.size(); i++)
+	for (unsigned int i = 0; i < a.size(); i++)
 		a[i] = i;
 	std::cout << a[7] << std::endl;
 

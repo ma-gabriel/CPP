@@ -17,6 +17,4 @@ class Intern {
 		AForm *makeForm(std::string form, std::string target);
 };
 
-std::ostream &operator<<(std::ostream & os, const Intern &t);
-
 #endif
