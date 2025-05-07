@@ -9,7 +9,7 @@ NAME = ex00
 
 CXX = c++
 
-CFLAGS = -Wall -Wextra -Werror -std=c++11
+CFLAGS = -Wall -Wextra -Werror -std=c++98
 
 %.o: %.cpp Makefile $(HEADERS)
 	$(CXX) $(CFLAGS) -c $< -o $@ -I.

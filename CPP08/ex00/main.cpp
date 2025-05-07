@@ -1,30 +1,45 @@
-
-
 #include "easyfind.hpp"
 
-#include<iostream>
-#include<array>
+#include <iostream>
+#include <vector>
+#include <deque>
+#include <list>
 
-using namespace std;
+
+template <typename T>
+void display(T &container)
+{
+    typename T::iterator it = container.begin();
+    typename T::iterator end = container.end();
+
+    while (it != end)
+		std::cout << *(it++) << " ";
+	std::cout << std::endl;
+}
+
 
 int main()
 {
-	array<int,6> ar = {1, 2, 3, 4, 5, 6};
-    for ( int i=0; i<6; i++)
-    std::cout << ar[i] << " ";
-    std::cout << std::endl;
+	std::list<int> container;
+	//std::vector<int> container;
+	//std::deque<int> container;
+	int nm[] = {1, 2, 3, 4, 5, 6, 7};
+	for (size_t i = 0; i < sizeof(nm) / sizeof(int); i++)
+		container.push_back(nm[i]);
+	display(container);
 
+    try
+	{
+        int& res = easyfind(container, 19);
+        std::cout << res << std::endl;
+        res = -1;
+    }
+	catch (const std::exception& e)
+	{
+        std::cerr << "Exception: " << e.what() << std::endl;
+	}
 
+	display(container);
 
-	int &res = easyfind(ar, 10);
-	std::cout << res << std::endl;
-	res = -1;
-	
-
-    for ( int i=0; i < 6; i++)
-    std::cout << ar[i] << " ";
-    std::cout << std::endl;
-
-
-	return 0;
+    return 0;
 }
