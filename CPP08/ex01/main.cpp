@@ -10,7 +10,14 @@ int main()
 	std::srand(time(NULL));
 
 	Span s(1000000); // 1 MILLION DE VALEURS !!!
-	s.addManyNumbers(1000000);
+
+
+	std::srand(time(NULL));
+	std::vector <int> temp(1000000, 0);
+	for (std::vector<int>::iterator it = temp.begin(); it != temp.end(); ++it)
+  		*it = std::rand();
+	
+	s.addManyNumbers(temp.begin(), temp.end());
 
 	Span p(3);
 	p.addNumber(10);

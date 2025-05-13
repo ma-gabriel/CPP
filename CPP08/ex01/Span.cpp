@@ -56,13 +56,9 @@ int Span::longestSpan(void)
 }
 
 
-void Span::addManyNumbers(unsigned int N)
+void Span::addManyNumbers(std::vector<int>::iterator start, std::vector<int>::iterator ending)
 {
-	if (_vec.size() + N > _N)
+	if (_vec.size() + ending - start > _N)
     	throw std::out_of_range("Too much Values");
-	std::srand(time(NULL));
-	std::vector <int> temp(N, 0);
-	for (std::vector<int>::iterator it = temp.begin(); it != temp.end(); ++it)
-  		*it = std::rand();
-	_vec.insert(_vec.end(), temp.begin(), temp.end());
+	_vec.insert(_vec.end(), start, ending);
 }
