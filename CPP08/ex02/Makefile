@@ -1,12 +1,11 @@
 
-SRCS =	main.cpp \
-		MutantStack.cpp
+SRCS =	main.cpp
 
 HEADERS = MutantStack.hpp
 
 OBJECTS = $(SRCS:.cpp=.o)
 
-NAME = ex01
+NAME = ex02
 
 CXX = c++
 

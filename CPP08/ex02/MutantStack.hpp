@@ -1,18 +1,20 @@
-#pragma once
 
-#include <iterator>
-#include <vector>
+#ifndef MUTANTSTACK_HPP
+# define MUTANTSTACK_HPP
+# include <iterator>
+# include <stack>
 
-template <class T, class Allocator = allocator<T>>
-class MutantStack
+template <class T>
+class MutantStack : public std::stack<T>
 {
 	public:
-		MutantStack(unsigned int N);
-		MutantStack(MutantStack &ref);
-		~MutantStack();
-		MutantStack &operator=(MutantStack &ref);
-		
-	private:
-		unsigned int _N;
-		std::vector<int> _vec;
+		MutantStack() {};
+		MutantStack(const MutantStack &ref) {this->c = ref.c;}
+		~MutantStack() {};
+		typedef typename std::stack<T>::container_type::iterator iterator;
+		MutantStack &operator=(const MutantStack &ref) {this->c = ref.c;};
+		iterator begin() {return this->c.begin();};
+		iterator end() {return this->c.end();};
 };
+
+#endif
