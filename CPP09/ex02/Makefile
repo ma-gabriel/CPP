@@ -12,10 +12,14 @@ CXX = c++
 
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 
+
 %.o: %.cpp Makefile $(HEADERS)
 	$(CXX) $(CFLAGS) -c $< -o $@ -I.
 
 all: $(NAME)
+
+debug:
+	$(MAKE) CFLAGS="$(CFLAGS) -DDEBUG"
 
 $(NAME): $(OBJECTS)
 	$(CXX) $(OBJECTS) -o $(NAME) $(CFLAGS)
