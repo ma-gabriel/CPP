@@ -1,14 +1,13 @@
 #include <iostream>
-#include <sys/time.h>
 #include "PmergeMe.hpp"
 #include <cstdlib>
-#include <climits>
 #include <algorithm>
 #include <unistd.h>
+#include <climits>
+#include <ctime>
+#include <cerrno>
 
-static timeval get_time();
 static bool check_args(char **argv);
-static void diff_time(timeval start, timeval end, std::string prompt);
 
 
 int main(int argc, char **argv)
@@ -18,61 +17,42 @@ int main(int argc, char **argv)
         return 1;
     }
     if (!check_args(argv + 1)){
-        std::cerr << "argument must be only postive numbers (between 0 and INTMAX) and space" << std::endl;
+        std::cerr << "argument must be only postive numbers (between 0 and INTMAX)" << std::endl;
         return 1;
     }
 
 
 
     {
-        timeval start = get_time();
+        std::clock_t start = std::clock();
         std::vector<int> vec = vector_create(argv + 1);
         std::vector<int> vec_sorted = vector_sort(vec);
-        timeval end = get_time();
+        std::clock_t end = std::clock();
 
 
         std::cout << "Before:" << vector_toString(vec) << std::endl;
         std::cout << "After: " << vector_toString(vec_sorted) << std::endl;
-        diff_time(start, end, "vectors => ");
+        std::cout << "vectors => " << static_cast<double>(end - start) / CLOCKS_PER_SEC << " seconds" << std::endl;
     }
 
     {
-        timeval start = get_time();
+        std::clock_t start = std::clock();
         std::deque<int> deq = deque_create(argv + 1);
         std::deque<int> deq_sorted = deque_sort(deq);
-        timeval end = get_time();
+        std::clock_t end = std::clock();
 
-
-        std::cout << "Before:" << deque_toString(deq) << std::endl;
-        std::cout << "After: " << deque_toString(deq_sorted) << std::endl;
-        diff_time(start, end, "deques => ");
+        std::cout << "deque   => " << static_cast<double>(end - start) / CLOCKS_PER_SEC << " seconds" << std::endl;
     }
-}
-
-static timeval get_time()
-{
-    timeval tv;
-    gettimeofday(&tv, NULL);
-    return tv;
-}
-
-static void diff_time(timeval start, timeval end, std::string prompt = "")
-{
-    time_t seconds = end.tv_sec - start.tv_sec;
-    suseconds_t microseconds = end.tv_usec - start.tv_usec;
-    if (microseconds < 0) {
-        seconds -= 1;
-        microseconds += 1000000;
-    }
-    std::cout << prompt << seconds << " seconds and " << microseconds << " microseconds" << std::endl;
-
 }
 
 static bool check_args(char **str)
 {
-    for (int i = 0; str[i]; i++)
+    for (int i = 0; str[i]; i++) {
         for (size_t j = 0; str[i][j]; j++)
-            if (!std::isdigit(str[i][j]))
-                return false;
+            if (!std::isdigit(str[i][j])) return false;
+        long val = std::strtol(str[i], 0, 10);
+        if (errno != 0 || val < 0 || val > INT_MAX)
+            return false;
+    }
     return true;
 }

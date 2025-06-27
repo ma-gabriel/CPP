@@ -28,7 +28,7 @@ std::vector<int> vector_create(char **arg)
     return res;
 }
 
-static int Jacobsthal(int count)
+static long Jacobsthal(int count)
 {
     long a = 2, b = 1;
     for (int i = 0; i < count; i++){
@@ -119,7 +119,7 @@ static void vector_sort_algo(std::vector<int> &vec, size_t size=1)
     int count = 2;
     while (small.size())
     {
-        int index = Jacobsthal(count);
+        long index = Jacobsthal(count);
         std::vector<std::pair<std::vector<int>, int> >::iterator small_it;
         for (small_it = small.begin(); small_it != small.end(); small_it++){
             if (small_it->second >= index - 1)
@@ -292,7 +292,7 @@ static void deque_sort_algo(std::deque<int> &vec, size_t size=1)
     int count = 2;
     while (small.size())
     {
-        int index = Jacobsthal(count);
+        long index = Jacobsthal(count);
         std::deque<std::pair<std::deque<int>, int> >::iterator small_it;
         for (small_it = small.begin(); small_it != small.end(); small_it++){
             if (small_it->second >= index - 1)
