@@ -13,7 +13,7 @@ int main(int argc, char **argv)
     try {
         std::cout << RPN::process(argv[1]) << std::endl;
     }
-    catch (std::string &e){
+    catch (const char *e){
         std::cerr << e << std::endl;
         return 1;
     }

@@ -62,6 +62,7 @@ bool BitcoinExchange::isValidDate(const std::string& date) {
 
 bool BitcoinExchange::isValidNumber(const std::string& s, double& result, bool check) {
     char* endptr;
+    if (s.empty()) return false;
     result = std::strtod(s.c_str(), &endptr);
     if (*endptr != '\0') return false;
     if (check && (result > 1000. || result < 0.)) return false;
@@ -109,17 +110,16 @@ void BitcoinExchange::process(char *file)
             std::cerr << date << " not yet in the sheet" << std::endl;
             continue;
         }
-        for (std::map<std::string, double>::iterator it = _data.begin(); it != _data.end(); it++){
+        for (std::map<std::string, double>::iterator it = _data.begin();; it++){
+            if (it == _data.end() || it->first > date){
+                std::cout << date << " => " << value << " = " << value * prev->second << std::endl; 
+                break;
+            }
             if (it->first == date){
                 std::cout << date << " => " << value << " = " << value * it->second << std::endl;  
                 break;
             }
-            else if (it->first > date){
-                std::cout << date << " => " << value << " = " << value * prev->second << std::endl; 
-                break;
-            }
-            else
-                prev = it;
+            prev = it;
         }
     }
 

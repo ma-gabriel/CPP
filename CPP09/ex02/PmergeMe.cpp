@@ -212,33 +212,33 @@ std::deque<int> deque_create(char **arg)
     return res;
 }
 
-static void deque_sort_algo(std::deque<int> &vec, size_t size=1)
+static void deque_sort_algo(std::deque<int> &dec, size_t size=1)
 {
-    if (size >= vec.size()) {
+    if (size >= dec.size()) {
 #ifdef DEBUG
-        std::cout << ":" << deque_toString(vec) << "\n";
+        std::cout << ":" << deque_toString(dec) << "\n";
 #endif
         return;
     }
     std::deque<int> A;
     std::deque<int>left;
     size_t i;
-    for (i = 0; i  + size * 2 < vec.size(); i += size * 2){
-        if (vec[i + size - 1] < vec[i + size * 2 - 1]){
+    for (i = 0; i  + size * 2 < dec.size(); i += size * 2){
+        if (dec[i + size - 1] < dec[i + size * 2 - 1]){
             for (size_t j = 0; j < size; j++)
-                A.push_back(vec[i + j]);
+                A.push_back(dec[i + j]);
             for (size_t j = 0; j < size; j++)
-                A.push_back(vec[i + size + j]);
+                A.push_back(dec[i + size + j]);
         }
         else {
             for (size_t j = 0; j < size; j++)
-                A.push_back(vec[i + size + j]);
+                A.push_back(dec[i + size + j]);
             for (size_t j = 0; j < size; j++)
-                A.push_back(vec[i + j]);
+                A.push_back(dec[i + j]);
         }
     }
-    for (;i < vec.size(); i++)
-        left.push_back(vec[i]);
+    for (;i < dec.size(); i++)
+        left.push_back(dec[i]);
 #ifdef DEBUG
     std::cout << ":" << deque_toString(A) << deque_toString(left) << "\n";
 #endif
@@ -248,7 +248,7 @@ static void deque_sort_algo(std::deque<int> &vec, size_t size=1)
     std::deque< std::pair<std::deque<int>, int> > small;
     std::deque< std::pair<std::deque<int>, int> > big;
 
-    for (i = 0; i  + size * 2 < vec.size(); i += size * 2){
+    for (i = 0; i  + size * 2 < dec.size(); i += size * 2){
         std::pair<std::deque<int>, int> tmp;
         tmp.second = i / size / 2;
         for (size_t j = 0; j < size; j ++)
@@ -341,26 +341,26 @@ static void deque_sort_algo(std::deque<int> &vec, size_t size=1)
             count++;
     }
 
-    vec.clear();
+    dec.clear();
     for (std::deque<std::pair<std::deque<int>, int> >::iterator it = big.begin(); it != big.end(); it++)
-        vec.insert(vec.end(), it->first.begin(), it->first.end());
+        dec.insert(dec.end(), it->first.begin(), it->first.end());
 
 #ifdef DEBUG
-    std::cout << "vec =" << deque_toString(vec) << "\n";
+    std::cout << "dec =" << deque_toString(dec) << "\n";
 #endif
 }
 
 
-std::deque<int> deque_sort(std::deque<int> vec) {
-    deque_sort_algo(vec);
-    return vec;
+std::deque<int> deque_sort(std::deque<int> dec) {
+    deque_sort_algo(dec);
+    return dec;
 }
 
 
-std::string deque_toString(std::deque<int> &vec)
+std::string deque_toString(std::deque<int> &dec)
 {
     std::string str;
-    for (std::deque<int>::iterator it = vec.begin(); it != vec.end(); it++)
+    for (std::deque<int>::iterator it = dec.begin(); it != dec.end(); it++)
         str += SSTR(" " << *it);
     return str;
 }
