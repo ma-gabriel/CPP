@@ -11,7 +11,7 @@ int main(int argc, char **argv)
         BitcoinExchange tmp;
         tmp.process(argv[1]);
     }
-    catch (std::string &e)
+    catch (const char *e)
     {
         std::cerr << e << std::endl;
     }
